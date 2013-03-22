@@ -1,4 +1,7 @@
 Networking::Application.routes.draw do
+  resources :developers
+
+
   resources :teams
 
 

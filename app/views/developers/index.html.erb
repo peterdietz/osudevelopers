@@ -1,0 +1,33 @@
+<h1>Listing developers</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Bio</th>
+    <th>Username</th>
+    <th>Team</th>
+    <th>Github username</th>
+    <th>Twitter username</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @developers.each do |developer| %>
+  <tr>
+    <td><%= developer.name %></td>
+    <td><%= developer.bio %></td>
+    <td><%= developer.username %></td>
+    <td><%= developer.team_id %></td>
+    <td><%= developer.github_username %></td>
+    <td><%= developer.twitter_username %></td>
+    <td><%= link_to 'Show', developer %></td>
+    <td><%= link_to 'Edit', edit_developer_path(developer) %></td>
+    <td><%= link_to 'Destroy', developer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Developer', new_developer_path %>

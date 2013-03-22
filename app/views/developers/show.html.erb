@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @developer.name %>
+</p>
+
+<p>
+  <b>Bio:</b>
+  <%= @developer.bio %>
+</p>
+
+<p>
+  <b>Username:</b>
+  <%= @developer.username %>
+</p>
+
+<p>
+  <b>Team:</b>
+  <%= @developer.team_id %>
+</p>
+
+<p>
+  <b>Github username:</b>
+  <%= @developer.github_username %>
+</p>
+
+<p>
+  <b>Twitter username:</b>
+  <%= @developer.twitter_username %>
+</p>
+
+
+<%= link_to 'Edit', edit_developer_path(@developer) %> |
+<%= link_to 'Back', developers_path %>

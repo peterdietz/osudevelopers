@@ -1,0 +1,41 @@
+<%= form_for(@developer) do |f| %>
+  <% if @developer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@developer.errors.count, "error") %> prohibited this developer from being saved:</h2>
+
+      <ul>
+      <% @developer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :bio %><br />
+    <%= f.text_field :bio %>
+  </div>
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :team_id %><br />
+    <%= f.number_field :team_id %>
+  </div>
+  <div class="field">
+    <%= f.label :github_username %><br />
+    <%= f.text_field :github_username %>
+  </div>
+  <div class="field">
+    <%= f.label :twitter_username %><br />
+    <%= f.text_field :twitter_username %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
