@@ -4,6 +4,7 @@
   <tr>
     <th>Name</th>
     <th>Description</th>
+    <th>Number of Teams</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,6 +14,7 @@
   <tr>
     <td><%= department.name %></td>
     <td><%= department.description %></td>
+    <td><%= department.teams.count %></td>
     <td><%= link_to 'Show', department %></td>
     <td><%= link_to 'Edit', edit_department_path(department) %></td>
     <td><%= link_to 'Destroy', department, method: :delete, data: { confirm: 'Are you sure?' } %></td>
