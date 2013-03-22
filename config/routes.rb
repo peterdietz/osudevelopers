@@ -1,4 +1,7 @@
 Networking::Application.routes.draw do
+  resources :technologies
+
+
   resources :applications
 
 
