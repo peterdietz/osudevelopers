@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :team_id %><br />
-    <%= f.number_field :team_id %>
+    <%= f.collection_select(:team_id, Team.all, :id, :name) %>
   </div>
   <div class="field">
     <%= f.label :status %><br />

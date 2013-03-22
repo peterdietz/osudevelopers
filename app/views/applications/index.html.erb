@@ -15,7 +15,7 @@
   <tr>
     <td><%= application.name %></td>
     <td><%= application.description %></td>
-    <td><%= application.team_id %></td>
+    <td><%= link_to application.team.name, application.team %></td>
     <td><%= application.status %></td>
     <td><%= link_to 'Show', application %></td>
     <td><%= link_to 'Edit', edit_application_path(application) %></td>
