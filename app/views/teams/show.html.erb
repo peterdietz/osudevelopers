@@ -15,6 +15,13 @@
   <%= link_to @team.department.name, @team.department %>
 </p>
 
+<h2>Applications</h2>
+<ul>
+  <% @team.applications.each do |application| %>
+    <li><%= link_to application.name, application %></li>
+  <% end %>
+</ul>
+
 <h2>Developers on Team</h2>
 <ul>
   <% @team.developers.each do |developer| %>
