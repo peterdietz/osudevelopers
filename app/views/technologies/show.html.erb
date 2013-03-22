@@ -15,6 +15,12 @@
   <%= @technology.website %>
 </p>
 
+<h2>Used by Applications</h2>
+<ul>
+  <% @technology.applications.each do |application| %>
+    <li><%= link_to application.name, application %></li>
+  <% end %>
+</ul>
 
 <%= link_to 'Edit', edit_technology_path(@technology) %> |
 <%= link_to 'Back', technologies_path %>
