@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130322031848) do
+ActiveRecord::Schema.define(:version => 20130322035341) do
 
   create_table "applications", :force => true do |t|
     t.string   "name"
@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(:version => 20130322031848) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "applications_technologies", :id => false, :force => true do |t|
+    t.integer "application_id", :null => false
+    t.integer "technology_id",  :null => false
+  end
+
+  add_index "applications_technologies", ["application_id", "technology_id"], :name => "index_applications_technologies", :unique => true
 
   create_table "departments", :force => true do |t|
     t.string   "name"
@@ -46,6 +53,14 @@ ActiveRecord::Schema.define(:version => 20130322031848) do
     t.integer  "department_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+  end
+
+  create_table "technologies", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "website"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
 end

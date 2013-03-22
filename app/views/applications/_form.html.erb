@@ -23,6 +23,16 @@
     <%= f.label :team_id %><br />
     <%= f.collection_select(:team_id, Team.all, :id, :name) %>
   </div>
+
+
+  <%= hidden_field_tag "application[technology_ids][]", nil%>
+    <% Technology.all.each do |technology| %>
+        <label class="checkbox">
+          <%= check_box_tag "application[technology_ids][]", technology.id, @application.technology_ids.include?(technology.id), id: dom_id(technology) %>
+          <%= technology.name %>
+        </label>
+    <% end %>
+
   <div class="field">
     <%= f.label :status %><br />
     <%= f.text_field :status %>
