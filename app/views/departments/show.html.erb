@@ -10,6 +10,12 @@
   <%= @department.description %>
 </p>
 
+<h2>Teams within Department</h2>
+<ul>
+<% @department.teams.each do |team| %>
+    <li><%= link_to team.name, team %></li>
+<% end %>
+</ul>
 
 <%= link_to 'Edit', edit_department_path(@department) %> |
 <%= link_to 'Back', departments_path %>
