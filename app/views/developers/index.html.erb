@@ -18,7 +18,7 @@
     <td><%= developer.name %></td>
     <td><%= developer.bio %></td>
     <td><%= developer.username %></td>
-    <td><%= developer.team_id %></td>
+    <td><%= link_to developer.team.name, developer.team %></td>
     <td><%= developer.github_username %></td>
     <td><%= developer.twitter_username %></td>
     <td><%= link_to 'Show', developer %></td>
