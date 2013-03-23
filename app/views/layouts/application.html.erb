@@ -1,14 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Networking</title>
+  <meta charset="utf-8">
+  <title><%= content_for?(:title) ? yield(:title) : "OSU Developer Network" %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Le styles -->
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <style>
+      body {
+          padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+  </style>
+
+  <!-- Fav and touch icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+  <link rel="shortcut icon" href="../assets/ico/favicon.png">
+
   <%= csrf_meta_tags %>
 </head>
+
 <body>
 
-<%= yield %>
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="brand" href="/">OSU Developer Network</a>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li><a href="<%= departments_path %>">Departments</a></li>
+          <li><a href="<%= teams_path %>">Teams</a></li>
+          <li><a href="<%= developers_path %>">Developers</a></li>
+          <li><a href="<%= applications_path %>">Applications</a></li>
+          <li><a href="<%= technologies_path %>">Technologies</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <%= yield %>
+
+</div> <!-- /container -->
+
+<!-- Footer
+    ================================================== -->
+<footer class="footer">
+  <div class="container">
+    <p>Built by <a href="http://github.com/peterdietz" target="_blank">Peter Dietz</a>, as a way to connect the developer groups on campus.</p>
+    <p>Lets lay a foundation of tools, and allow others to build upon this, as opposed to constantly reinventing the wheel.</p>
+
+
+    <ul class="footer-links">
+      <li><a href="#">Blog</a></li>
+      <li class="muted">&middot;</li>
+      <li><a href="#">Issues</a></li>
+      <li class="muted">&middot;</li>
+      <li><a href="#">Changelog</a></li>
+    </ul>
+  </div>
+</footer>
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<%= javascript_include_tag "application" %>
 
 </body>
 </html>
