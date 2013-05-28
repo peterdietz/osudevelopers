@@ -11,6 +11,10 @@
 <p>
   <b>Bio:</b>
   <%= @developer.bio %>
+  <br/>
+    <p class="alert">TODO: Pull from <%= link_to 'Yammer profile', @developer.yammerURL %>, <%= link_to 'API', @developer.yammerAPIURL %></p>
+  <br/>
+
 </p>
 
 <p>
@@ -32,6 +36,34 @@
   <b>Twitter username:</b>
   <%= @developer.twitter_username %>
 </p>
+
+
+<h2>KMData Information</h2>
+<% unless @kmdataPerson.empty? %>
+    <p><b>Name: </b><%= @kmdataPerson["display_name"] %></p>
+    <% @kmdataPerson["appointments"].each do |appointment| %>
+        <p><b>Title: </b><%= appointment["title"] %> - <%= appointment["working_title"] %></p>
+    <% end %>
+
+    <% @kmdataPerson["addresses"].each do |address| %>
+        <p><b>Address: </b><%= address["formatted"]%></p>
+    <% end %>
+
+    <% @kmdataPerson["emails"].each do |email| %>
+        <p><b>Email: </b><%= email["email"]%></p>
+    <% end %>
+
+    <% @kmdataPerson["phone_numbers"].each do |phone| %>
+        <p><b>Phone: </b><%= phone["formatted"]%></p>
+    <% end %>
+
+    <% @kmdataPerson["journal_articles"].each do |article| %>
+        <p><b>Article: </b><%= article["journal_title"]%> - <%= article["article_title"]%> by <%= article["author_list"]%></p>
+    <% end %>
+<% else %>
+    <p class="alert">Could not look up data, missing name.#</p>
+<% end %>
+
 
 
 <%= link_to 'Edit', edit_developer_path(@developer) %> |

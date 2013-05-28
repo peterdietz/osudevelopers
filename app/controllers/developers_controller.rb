@@ -15,6 +15,17 @@ class DevelopersController < ApplicationController
   def show
     @developer = Developer.find(params[:id])
 
+    require 'open-uri'
+    require 'json'
+
+    # Yammer requires oauth authentication to be able to query
+
+    @kmdataPerson = {}
+    # Fetch info from KMDATA People
+    unless @developer.username.nil? or @developer.username.blank?
+      @kmdataPerson = JSON.parse(open(@developer.kmdataPersonURL).read)
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @developer }
