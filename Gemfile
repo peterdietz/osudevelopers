@@ -21,6 +21,7 @@ end
 
 group :development, :test do
   gem 'sqlite3'
+  gem "better_errors", "~> 0.7.2"
 end
 
 group :production do
