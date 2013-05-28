@@ -2,7 +2,13 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    @teams = Team.all
+    if(params[:department_id].nil?)
+      @teams = Team.all
+    else
+      @department = Department.find(params[:department_id])
+      @teams = @department.teams
+    end
+
 
     respond_to do |format|
       format.html # index.html.erb

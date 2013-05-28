@@ -8,10 +8,14 @@ Networking::Application.routes.draw do
   resources :developers
 
 
-  resources :teams
+  resources :teams do
+    resources :developers
+  end
 
 
-  resources :departments
+  resources :departments do
+    resources :teams
+  end
 
   root :to => 'departments#index'
 
