@@ -26,6 +26,11 @@ class DevelopersController < ApplicationController
       @kmdataPerson = JSON.parse(open(@developer.kmdataPersonURL).read)
     end
 
+    @githubRepos = {}
+    unless @developer.github_username.nil? or @developer.github_username.blank?
+      @githubRepos = JSON.parse(open(@developer.githubReposURL).read)
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @developer }

@@ -28,5 +28,13 @@ class Developer < ActiveRecord::Base
     includeString = '?include=addresses,advisees,appointments,artworks,audio_visual_works,biographies,books,chapters,clinical_services,clinical_trials,conferences,degree_certifications,edited_books,editorial_activities,emails,honors,identifiers,journal_articles,language_proficiencies,languages,misc_courses,musics,narratives,other_creative_works,patents,phone_numbers,positions,preferred_appointments,preferred_keywords,preferred_names,presentations,professional_activities,professional_society_memberships,reference_works,resource,softwares,strategic_initiatives,technical_reports,unpublished_works'
     return kmdataBaseURL + username + '.json' + includeString
   end
+
+  def githubReposURL
+    if github_username.nil? or github_username.blank?
+      return nil
+    end
+
+    return 'https://api.github.com/users/' + github_username + '/repos'
+  end
 end
 

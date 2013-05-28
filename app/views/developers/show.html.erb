@@ -30,6 +30,15 @@
 <p>
   <b>Github username:</b>
   <%= @developer.github_username %>
+  <% unless @githubRepos.empty? %>
+    <ul>
+    <% @githubRepos.each do |repo| %>
+        <li><%= link_to repo["full_name"], repo["html_url"] %> - Language: <%= repo["language"] %> - Forks: <%= repo["forks"] %> - Watchers: <%= repo["watchers"] %>
+
+    <% end %>
+    </ul>
+
+  <% end %>
 </p>
 
 <p>
