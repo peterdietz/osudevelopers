@@ -1,5 +1,8 @@
 class Developer < ActiveRecord::Base
   belongs_to :team
+
+  validates :username, format: /^[a-z]+\.\d+$/i, presence: true
+
   attr_accessible :bio, :github_username, :name, :team_id, :twitter_username, :username
 
   def email
