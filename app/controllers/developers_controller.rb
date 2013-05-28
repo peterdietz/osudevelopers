@@ -28,7 +28,9 @@ class DevelopersController < ApplicationController
 
     @githubRepos = {}
     unless @developer.github_username.nil? or @developer.github_username.blank?
-      @githubRepos = JSON.parse(open(@developer.githubReposURL).read)
+      @githubRepos = JSON.parse(open(@developer.githubReposURL).read).reject do |repo|
+        repo['fork']
+      end
     end
 
     respond_to do |format|

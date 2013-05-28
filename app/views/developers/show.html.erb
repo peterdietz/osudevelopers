@@ -33,7 +33,6 @@
   <% unless @githubRepos.empty? %>
     <ul>
     <% @githubRepos.each do |repo| %>
-        <% next if repo["fork"] %>
         <li><%= link_to repo["full_name"], repo["html_url"] %> - <%= repo["description"] %> - Language: <%= repo["language"] %> - Forks: <%= repo["forks"] %> - Watchers: <%= repo["watchers"] %>
 
     <% end %>
