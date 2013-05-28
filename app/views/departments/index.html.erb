@@ -1,28 +1,26 @@
-<h1>Listing departments</h1>
+<h1>Departments</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Number of Teams</th>
-    <th>Number of Developers</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @departments.each do |department| %>
-  <tr>
-    <td><%= department.name %></td>
-    <td><%= department.description %></td>
-    <td><%= department.teams.count %></td>
-    <td><%= department.developers_within_department %></td>
-    <td><%= link_to 'Show', department %></td>
-    <td><%= link_to 'Edit', edit_department_path(department) %></td>
-    <td><%= link_to 'Destroy', department, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+<ul>
+    <% @departments.each do |department| %>
+        <li>
+            <%= link_to department.name, department %> - <%= department.description %>
+
+            <ul>
+                <% department.teams.each do |team| %>
+                    <li><%= link_to team.name, team %></li>
+                    <ul>
+                        <% team.developers.each do |developer| %>
+                            <li><%= link_to developer.name, developer %></li>
+                        <% end %>
+                    </ul>
+                <% end %>
+            </ul>
+        </li>
+    <% end %>
+    
+    
+</ul>
 
 <br />
 

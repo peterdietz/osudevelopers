@@ -1,13 +1,8 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= @team.name %></h1>
 <p>
-  <b>Name:</b>
-  <%= @team.name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @team.description %>
+    <%= @team.description %>
 </p>
 
 <p>
@@ -15,20 +10,25 @@
   <%= link_to @team.department.name, @team.department %>
 </p>
 
+<h2>Developers on Team</h2>
+<ul>
+    <% @team.developers.each do |developer| %>
+        <li><%= link_to developer.name, developer %></li>
+    <% end %>
+</ul>
+<%= link_to 'New Developer', new_developer_path %>
+
+<hr/>
+
 <h2>Applications</h2>
 <ul>
   <% @team.applications.each do |application| %>
     <li><%= link_to application.name, application %></li>
   <% end %>
 </ul>
+<%= link_to 'New Application', new_application_path %>
 
-<h2>Developers on Team</h2>
-<ul>
-  <% @team.developers.each do |developer| %>
-    <li><%= link_to developer.name, developer %></li>
-  <% end %>
-</ul>
-
+<hr/>
 
 <%= link_to 'Edit', edit_team_path(@team) %> |
 <%= link_to 'Back', teams_path %>

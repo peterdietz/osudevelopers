@@ -1,21 +1,26 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @department.name %></h1>
 
 <p>
-  <b>Name:</b>
-  <%= @department.name %>
-</p>
-
-<p>
-  <b>Description:</b>
   <%= @department.description %>
 </p>
 
-<h2>Teams within Department</h2>
+<h2><%= link_to "Teams", department_teams_path(@department) %></h2>
 <ul>
-<% @department.teams.each do |team| %>
-    <li><%= link_to team.name, team %></li>
-<% end %>
+    <% @department.teams.each do |team| %>
+        <li><%= link_to team.name, team %> - <%= team.description %></li>
+        <ul>
+            <% team.developers.each do |developer| %>
+                <li><%= link_to developer.name, developer %></li>
+            <% end %>
+        </ul>
+    <% end %>
 </ul>
 
-<%= link_to 'Edit', edit_department_path(@department) %> |
+<hr/>
+
+
+<p class="well">
+    <%= link_to 'Edit', edit_department_path(@department) %> |
+    <%= link_to 'Destroy', @department, method: :delete, data: { confirm: 'Are you sure?' } %>
+</p>
 <%= link_to 'Back', departments_path %>
