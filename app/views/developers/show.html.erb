@@ -30,9 +30,19 @@
   <% unless @githubRepos.empty? %>
     <ul>
     <% @githubRepos.each do |repo| %>
-        <% next if repo["fork"] %>
-        <li><%= link_to repo["full_name"], repo["html_url"] %> - <%= repo["description"] %> - Language: <%= repo["language"] %> - Forks: <%= repo["forks"] %> - Watchers: <%= repo["watchers"] %>
+        <li itemscope itemtype="http://schema.org/Code">
+            <% if repo["fork"] %>
+                <i class="icon-tags" title="Is a Fork"></i>
+            <% else %>
+                <i class="icon-tag" title="Not a Fork"></i>
+            <% end %>
 
+            <a itemprop="codeRepository" href="<%=repo['html_url']%>"><span itemprop="name"><%=repo["full_name"]%></a>
+            - <span itemprop="programmingLanguage"><%= repo["language"] %></span>
+            - <i class="icon-tags" title="Forks"></i> <%= repo["forks"] %>
+            - <i class="icon-star" title="Watchers"></i> <%= repo["watchers"] %>
+            - <span itemprop="description"><%= repo["description"] %></span>
+        </li>
     <% end %>
     </ul>
 
