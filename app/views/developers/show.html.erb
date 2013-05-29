@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <% unless @developer.username == "" %>
-  <img src="<%= @developer.opicURL%>"/>
+  <img src="<%= @developer.opicURL%>"/><i class="icon-info-sign" data-toggle="tooltip" title="OPIC for Images: <%=@developer.opicURL%>"></i>
 <% end %>
 <h1><%= @developer.name %></h1>
 
@@ -28,6 +28,7 @@
   <b>Github username:</b>
   <%= @developer.github_username %>
   <% unless @githubRepos.empty? %>
+    <i class="icon-info-sign" title="GitHub API: <%=@developer.githubReposURL%>"></i>
     <ul>
     <% @githubRepos.each do |repo| %>
         <li itemscope itemtype="http://schema.org/Code">
@@ -52,11 +53,13 @@
 <p>
   <b>Twitter username:</b>
   <%= @developer.twitter_username %>
+  <p class="alert alert-info">API Pull Not Yet Implemented</p>
 </p>
 
 
 <h2>KMData Information</h2>
 <% unless @kmdataPerson.empty? %>
+    <i class="icon-info-sign" title="KMData API: <%= @developer.kmdataPersonURL %>"></i>
     <p><b>Name: </b><%= @kmdataPerson["display_name"] %></p>
     <% @kmdataPerson["appointments"].each do |appointment| %>
         <p><b>Title: </b><%= appointment["title"] %> - <%= appointment["working_title"] %></p>
