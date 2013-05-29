@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <% unless @developer.username == "" %>
-  <img src="https://opic.osu.edu/<%= @developer.username %>"/>
+  <img src="<%= @developer.opicURL%>"/>
 <% end %>
 <h1><%= @developer.name %></h1>
 

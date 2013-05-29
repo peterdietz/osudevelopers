@@ -39,5 +39,9 @@ class Developer < ActiveRecord::Base
 
     return 'https://api.github.com/users/' + github_username + '/repos'
   end
+
+  def opicURL
+    'https://opic.osu.edu/' + username
+  end
 end
 
